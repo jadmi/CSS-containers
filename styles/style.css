@@ -1,0 +1,142 @@
+/* https://developer.mozilla.org/en-US/blog/getting-started-with-css-container-queries/ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #ffffff;
+    --article-red: #ffe0e0;
+    --article-yellow: #fff4cc;
+    --article-green: #e0ffe7;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 0 1rem;
+    font-family: Montserrat, sans-serif;
+    line-height: 1.3;
+    background-color: var(--background);
+}
+
+article * {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    font-size: clamp(1.4rem, 1rem + 2cqi, 4rem);
+}
+
+.grid-container {
+    padding: 1rem;
+    margin: 0 auto;
+    max-width: 1400px;
+    /* This was missing on the website for some reason???? */
+    container: layout / inline-size;
+}
+
+.article-container {
+    container: article / inline-size;
+    outline: 1px solid;
+    resize: horizontal;
+    overflow: auto;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+
+article {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--background);
+    min-height: 10em;
+}
+
+img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+
+.grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+
+@container layout (inline-size > 800px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@container article (inline-size < 500px) {
+    article {
+        background: var(--article-red);
+        grid-template-columns: 1fr;
+    }
+}
+
+@container article (inline-size >= 500px) and (inline-size < 800px) {
+    article {
+        background: var(--article-yellow);
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+@container article (inline-size >= 800px) {
+    article {
+        background: var(--article-green);
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        font-size: 1.2rem;
+    }
+
+      .article-container:first-child {
+    grid-column: span 2;
+  }
+}
+
+@container layout (inline-size > 1000px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .article-container:first-child {
+    grid-column: span 4;
+  }
+
+  .article-container:nth-child(2),
+  .article-container:nth-child(3) {
+    grid-column: span 2;
+  }
+}
+
+@media (prefers-color-scheme: dark){
+    :root {
+    --background: #000000;
+    --article-red: #b54545;
+    --article-yellow: #cdae3c;
+    --article-green: #41dc65;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference){
+    article {
+    transition: 1000ms ease;
+}
+
+}
