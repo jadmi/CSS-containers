@@ -1,0 +1,64 @@
+:root{
+    --boxSize: 15em;
+    --marginBoxes: 1em;
+    --borderRadius: 2em;
+
+    /* Colors */
+    color-scheme: light dark;
+    --backgroundColor: light-dark(white, black)
+}
+
+ul {
+    overflow: scroll;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    padding: 0;
+    margin: 0;
+    padding: calc(50vh - calc(0.5 * var(--boxSize))) 0;
+    box-sizing: border-box; 
+
+    
+}
+
+ul::-webkit-scrollbar {
+  display: none;
+}
+
+body{
+    background-color: var(--backgroundColor);
+}
+
+li{
+    list-style-type: none;  
+    width: fit-content;
+    height: fit-content;
+    margin: var(--marginBoxes);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    container-type: scroll-state;
+}
+
+li div{
+    background-color: red;
+    opacity: 0.40;
+    height: var(--boxSize);
+    width: var(--boxSize);
+    border-radius: var(--borderRadius);
+
+     transition: 0.5s 0.75s;
+
+}
+
+@container scroll-state(snapped: y) {
+    li div{
+        width: calc(var(--boxSize)*1.5);
+        height: calc(var(--boxSize)*1.5);
+
+        border-radius: calc(var(--borderRadius)*1.5);
+
+        opacity: 1;
+        /* transform: scale(1.75); */
+
+        transition: 1s 0.75s;
+    }
+}

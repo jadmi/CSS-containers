@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box; 
+}
+
+:root{
+    color-scheme: light dark;
+    --boxSize: 10em;
+    --ulHeight: 30em;
+
+    /* colors */
+    --backgroundColor: light-dark(white, black);
+    --cubeColor: light-dark(black, white);
+    --highLightAnimationColor: red;
+    --afterAnimationColor: grey;
+}
+
+html{
+    scroll-snap-type: y mandatory;
+}
+
+body{
+    padding: 10em 0;
+    margin: 0;
+    background-color: var(--backgroundColor);
+}
+
+ul{
+    height: var(--ulHeight);
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items:start;
+    border-radius: 1em;
+    box-sizing: border-box; 
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-block-start: -10px;
+}
+
+li{
+    list-style-type: none;
+    /* margin: 4em 0; */
+    width: fit-content;
+    position: sticky;
+    top: 0px;
+    container-type: scroll-state;
+}
+
+div{
+    background-color: var(--cubeColor);
+    border-radius: 1em;
+    width: var(--boxSize);
+    height: var(--boxSize);
+    transition: 0.5s;
+
+}
+
+@keyframes flashColor {
+    0%{
+        background-color: var(--cubeColor);
+    } 50% {
+        background-color: var(--highLightAnimationColor);
+    } 100%{
+        background-color: var(--afterAnimationColor);
+    }
+}
+
+
+@container scroll-state(stuck: top){
+    div{
+        width: 100dvw;
+        animation-name: flashColor;
+        animation-duration: 1s;
+        background-color: var(--afterAnimationColor);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}

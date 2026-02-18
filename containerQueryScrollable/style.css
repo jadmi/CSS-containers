@@ -1,0 +1,19 @@
+div{
+    display: flex;
+    overflow: scroll;
+    width: 90vw;
+    container-type: scroll-state size;
+}
+
+
+/* @container scroll-state(scrollable:left) {
+    div{
+        background-color: red;
+    }
+}
+      
+@container scroll-state(scrollable:right) {
+    div{
+        background-color: blue;
+    }
+} */
