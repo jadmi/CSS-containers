@@ -10,6 +10,7 @@
     --article-red: #ffe0e0;
     --article-yellow: #fff4cc;
     --article-green: #e0ffe7;
+    --text-color: #000000;
 }
 
 body {
@@ -29,10 +30,12 @@ ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    color: var(--text-color)
 }
 
 h2{
     font-size: clamp(1.4rem, 1rem + 2cqi, 4rem);
+    color: var(--text-color)
 }
 
 .grid-container {
@@ -131,6 +134,7 @@ img {
     --article-red: #b54545;
     --article-yellow: #cdae3c;
     --article-green: #41dc65;
+    --text-color: #ffffff;
     }
 }
 
