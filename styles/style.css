@@ -8,7 +8,7 @@
 :root {
     --background: #ffffff;
     --article-red: #ffe0e0;
-    --article-yellow: #fff4cc;
+    --article-blue: #ccd2ff;
     --article-green: #e0ffe7;
     --text-color: #000000;
 }
@@ -95,7 +95,7 @@ img {
 
 @container article (inline-size >= 500px) and (inline-size < 800px) {
     article {
-        background: var(--article-yellow);
+        background: var(--article-blue);
         grid-template-columns: 1fr 2fr;
     }
 }
@@ -132,7 +132,7 @@ img {
     :root {
     --background: #000000;
     --article-red: #b54545;
-    --article-yellow: #cdae3c;
+    --article-blue: #483ccd;
     --article-green: #41dc65;
     --text-color: #ffffff;
     }
